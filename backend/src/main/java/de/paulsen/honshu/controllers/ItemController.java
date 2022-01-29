@@ -4,9 +4,7 @@ import de.paulsen.honshu.entities.Item;
 import de.paulsen.honshu.services.ItemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +27,43 @@ public class ItemController {
 			System.err.println(ex.getMessage());
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+
+	@PostMapping("/tasks")
+	public ResponseEntity<Item> addNewItem(@RequestBody final Item task) {
+		try {
+			var _task = is.addNewItem(task.getTask(), task.isCompleted());
+			return new ResponseEntity<>(_task, HttpStatus.CREATED);
+		} catch (Exception ex) {
+			System.err.println(ex.getMessage());
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@DeleteMapping("/tasks/{id}")
+	public ResponseEntity<HttpStatus> deleteItem(@PathVariable("id") final String id) {
+		try {
+			is.deleteItem(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception ex) {
+			System.err.println(ex.getMessage());
+			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+
+	@DeleteMapping("/tasks")
+	public ResponseEntity<HttpStatus> deleteAllItems() {
+		try {
+			is.deleteAllItems();
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception ex) {
+			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+
+	@PutMapping("/tasks/{id}")
+	public ResponseEntity<Item> updateItem(@PathVariable("id") String id, @RequestBody Item item) {
+		var taskData = is.findById(id);
+		return taskData != null ? new ResponseEntity<>(is.updateItem(id, item), HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 }

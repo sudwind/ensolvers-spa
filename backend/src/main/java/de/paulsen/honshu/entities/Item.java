@@ -25,6 +25,11 @@ public class Item {
 		this.isCompleted = isCompleted;
 	}
 
+	public Item(String task, boolean isCompleted) {
+		this.task = task;
+		this.isCompleted = isCompleted;
+	}
+
 	public String getId() {
 		return id;
 	}
