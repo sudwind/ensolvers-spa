@@ -32,7 +32,7 @@ public class ItemController {
 	@PostMapping("/tasks")
 	public ResponseEntity<Item> addNewItem(@RequestBody final Item task) {
 		try {
-			var _task = is.addNewItem(task.getTask(), task.isCompleted());
+			var _task = is.addNewItem(task.getTaskText(), task.isCompleted());
 			return new ResponseEntity<>(_task, HttpStatus.CREATED);
 		} catch (Exception ex) {
 			System.err.println(ex.getMessage());

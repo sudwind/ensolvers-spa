@@ -37,7 +37,7 @@ public class ItemService {
 
 		if(taskData.isPresent()) {
 			var _item = taskData.get();
-			_item.setTask(item.getTask());
+			_item.setTaskText(item.getTaskText());
 			_item.setCompleted(item.isCompleted());
 			return itemRep.save(_item);
 		} else {

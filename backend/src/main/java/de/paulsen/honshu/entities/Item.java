@@ -3,9 +3,7 @@ package de.paulsen.honshu.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Item {
@@ -14,19 +12,19 @@ public class Item {
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
 
-	private String task;
+	private String taskText;
 	private boolean isCompleted;
 
 	public Item() {}
 
-	public Item(String id, String task, boolean isCompleted) {
+	public Item(String id, String taskText, boolean isCompleted) {
 		this.id = id;
-		this.task = task;
+		this.taskText = taskText;
 		this.isCompleted = isCompleted;
 	}
 
-	public Item(String task, boolean isCompleted) {
-		this.task = task;
+	public Item(String taskText, boolean isCompleted) {
+		this.taskText = taskText;
 		this.isCompleted = isCompleted;
 	}
 
@@ -38,12 +36,12 @@ public class Item {
 		this.id = id;
 	}
 
-	public String getTask() {
-		return task;
+	public String getTaskText() {
+		return taskText;
 	}
 
-	public void setTask(String task) {
-		this.task = task;
+	public void setTaskText(String taskText) {
+		this.taskText = taskText;
 	}
 
 	public boolean isCompleted() {
@@ -58,7 +56,7 @@ public class Item {
 	public String toString() {
 		return "Item{" +
 				"id='" + id + '\'' +
-				", task='" + task + '\'' +
+				", task='" + taskText + '\'' +
 				", isCompleted=" + isCompleted +
 				'}';
 	}
