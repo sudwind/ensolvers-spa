@@ -37,8 +37,8 @@ const TasksList = () => {
 	}, [])
 
 	return (
-		<div>
-			<h1>To-Do List</h1>
+		<div className='tasks-list'>
+			<h1 className='tasks-list-header'>To-Do List</h1>
 			<TasksForm onSubmit={addTasks} />
 			{
 				tasks.map((task, index) => {
@@ -47,6 +47,7 @@ const TasksList = () => {
 					)
 				})
 			}
+			
 		</div>
 	)
 }

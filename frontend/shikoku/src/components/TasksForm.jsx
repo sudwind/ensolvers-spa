@@ -24,37 +24,41 @@ const TasksForm = (props) => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit} >
-			{props.edit ? (
-				<>
-					<input
-						placeholder='Add a new Task...'
-						value={input}
-						onChange={handleChange}
-						name='text'
-						ref={inputRef}
-						maxLength="26"
-					/>
-					<button onClick={handleSubmit} >
-						Update
-					</button>
-				</>
-			) : (
-				<>
-					<input
-						placeholder='Add a new Task...'
-						value={input}
-						onChange={handleChange}
-						name='text'
-						ref={inputRef}
-						maxLength="26"
-					/>
-					<button onClick={handleSubmit}>
-						Add
-					</button>
-				</>
-			)}
-		</form>
+		<div className='tasks-form'>
+			<form onSubmit={handleSubmit} >
+				{props.edit ? (
+					<>
+						<input
+							placeholder='Add a new Task...'
+							value={input}
+							onChange={handleChange}
+							name='text'
+							ref={inputRef}
+							className='tasks-input edit'
+							maxLength="26"
+						/>
+						<button onClick={handleSubmit} className='tasks-button' >
+							Update
+						</button>
+					</>
+				) : (
+					<>
+						<input
+							placeholder='Add a new Task...'
+							value={input}
+							onChange={handleChange}
+							name='text'
+							className='tasks-input'
+							ref={inputRef}
+							maxLength="26"
+						/>
+						<button onClick={handleSubmit} className='tasks-button edit'>
+							Add
+						</button>
+					</>
+				)}
+			</form>
+		</div>
 	)
 }
 

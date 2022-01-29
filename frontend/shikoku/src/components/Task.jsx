@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import TasksForm from './TasksForm';
+import '../App.css';
+
 
 const Task = (props) => {
 	const [edit, setEdit] = useState({
@@ -70,29 +72,34 @@ const Task = (props) => {
 
 	return (
 
-		<div key={props.index}>
-			<div>
+		<div 
+			className='tasks-row'
+			key={props.index}
+		>
+			<div className='tasks-pair'>
 				<div>
 					<input type="checkbox" onChange={(e) => { handleCheckboxChange(e) }} checked={checked} onClick={() => setCompletedTask(props.taskData)}></input>
 				</div>
-				<div key={props.taskData.id}>
+				<div className='tasks-conent' key={props.taskData.id}>
 					{props.taskData.taskText}
 				</div>
 			</div>
 
 			<div>
 				<div
-					onClick={() => deleteTask(props.taskData)}
-				>
-					Remove
-				</div>
-				<div
 					onClick={() => {
 						setEdit({ ...props.taskData, id: props.taskData.id, taskText: props.taskData.taskText })
 						setShouldEdit(true)
 					}}
+					className='edit-tag'
 				>
 					Edit
+				</div>
+				<div
+					onClick={() => deleteTask(props.taskData)}
+					className='remove-tag'
+				>
+					Remove
 				</div>
 			</div>
 		</div>
