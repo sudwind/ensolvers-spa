@@ -1,4 +1,4 @@
-package de.paulsen.honshu.item;
+package de.paulsen.honshu.entities;
 
 
 import org.hibernate.annotations.GenericGenerator;
