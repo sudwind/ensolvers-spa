@@ -2,7 +2,6 @@ package de.paulsen.honshu.services;
 
 import de.paulsen.honshu.entities.Item;
 import de.paulsen.honshu.repositories.ItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
